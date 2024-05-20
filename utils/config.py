@@ -10,7 +10,7 @@ class Config(object):
         assert os.path.exists(filename), "ERROR: Config File doesn't exist."
         try:
             with open(filename, 'r') as f:
-                self._cfg_dict = yaml.load(f)
+                self._cfg_dict = yaml.load(f, Loader=yaml.FullLoader)
         # parent of IOError, OSError *and* WindowsError where available
         except EnvironmentError:
             logger.error('Please check the file with name of "%s"', filename)
